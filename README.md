@@ -26,6 +26,9 @@
 ### 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1DjHUWZd03OgGq_5ft2ZUCV1n7pOQqOcXBNwHYcyTD5Q/edit?usp=sharing
 
+規約：
+著作権に触れる可能性があるため、画像は使用しないこと
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
