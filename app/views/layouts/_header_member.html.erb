@@ -1,0 +1,20 @@
+<nav class="nav navbar-brand">
+  <%= link_to root_path,class:"text-light font-weight-bold display-4" do %>Favorite Movies<% end %>
+</nav>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav ml-auto">
+    <li>
+      <%= link_to members_my_page_path,class: "nav-link text-light" do %>マイページ<% end %>
+    </li>
+    <li>
+      <%= link_to movies_path,class: "nav-link text-light" do %>作品一覧<% end %>
+    </li>
+    <li>
+      <%= link_to destroy_member_session_path,class: "nav-link text-light", method: :delete do %>ログアウト<% end %>
+    </li>
+  </ul>
+</div>
