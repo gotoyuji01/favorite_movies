@@ -19,14 +19,14 @@
       <div class="col-3">
         <%= f.label :パスワード（6文字以上） %></div>
       <div class="col-9">
-        <%= f.password_field :password, autocomplete: "new-password", class: "password" %></div>
+        <%= f.password_field :password, autocomplete: "new-password" %></div>
     </div>
 
     <div class="row">
       <div class="col-3">
         <%= f.label :パスワード（確認用） %></div>
       <div class="col-9">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password_confirm" %></div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
     </div>
 
     <div class="row">
@@ -37,7 +37,7 @@
 
   <% end %>
 
-  <h2>既に会員登録済みの方</h2>
+  <h3>既に会員登録済みの方</h3>
 
   <%= link_to "こちら", new_member_session_path %>
   <span> からログインしてください。</span>

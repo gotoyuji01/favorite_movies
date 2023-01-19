@@ -1,27 +1,21 @@
-<h2>Log in</h2>
+<h2>管理者ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row" style="margin-top:50px;">
+      <div class="col-2">
+        <%= f.label :メールアドレス %></div>
+      <div class="col-9" style="margin-left:20px;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="row" style="margin-top:10px;">
+      <div class="col-2"><%= f.label :パスワード %></div>
+      <div class="col-9" style="margin-left:20px;"><%= f.password_field :password, autocomplete: "current-password" %></div>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-9" style="margin:20px 0 0 20px;">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<!--Viewフォルダの名称を変更したためadminに変更-->
-<%= render "admin/shared/links" %>
