@@ -8,4 +8,14 @@ class Member < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@member.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.password_confirmation = member.password
+      member.name = 'ゲストメンバー'
+    end
+  end
+  
+  
 end

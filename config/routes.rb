@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     resources :reviews,only:[:new,:create,:show]
     resources :comments,only:[:new,:create]
   
+  #ゲストログイン
+  devise_scope :member do
+    post 'guest_sign_in' => 'sessions#new_guest'
+  end
+  
   end
   
   #管理者側
