@@ -1,2 +1,59 @@
-<h1>Public::Movies#new</h1>
-<p>Find me in app/views/public/movies/new.html.erb</p>
+<h2>作品投稿</h2></br>
+
+<% if @movie.errors.any? %>
+  <ul>
+    <% @movie.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+  <%= form_with model: @movie do |f| %>
+    <div class="row">
+      <div class="col-3">
+        <%= f.label :作品名 %></div>
+      <div class="col-9">
+        <%= f.text_field :title, autofocus: true %></div>
+    </div>
+  
+    <div class="row">
+      <div class="col-3">
+        <%= f.label :ジャンル %></div>
+      <div class="col-9">
+        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %> 
+          <%= genre.label do %>
+          <%= genre.check_box %>
+          <%= genre.text %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  
+  <!-- 別のモデルのフォームはfields_forを使う -->
+  <%= f.fields_for :reviews do |review| %>
+
+    <div class="row">
+      <div class="col-3">
+        <%= review.label :評価 %></div>
+      <div class="col-9">
+        <!--step: '0.1'で小数点以下第一位まで入力可能-->
+        <%= review.number_field :point, step: '0.1', class: "hoge", min: 1, max: 5 %> /5点</div>
+        <!--ログインメンバーのidで保存する-->
+        <%= review.hidden_field :member_id, value: current_member.id %>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <%= review.label :レビュー %></div>
+      <div class="col-9">
+        <%= review.text_area :review_text %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <%= f.submit "作品投稿",class: "btn btn-success" %></div>
+    </div>
+
+  <% end %>
+  <% end %>

@@ -8,6 +8,12 @@ class Member < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  # 会員名が一意であること
+  validates :name, uniqueness: true
+  
+  # メールアドレスが一意であること
+  validates :email, uniqueness: true
+  
   # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@member.com') do |member|

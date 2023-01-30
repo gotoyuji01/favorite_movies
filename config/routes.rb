@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/members/my_page' => 'members#show'
-    resources :movies,only:[:new,:create,:index,:show]
-    resources :reviews,only:[:new,:create,:show]
+  #moviesが親、reviewsが子の関係  
+    resources :movies,only:[:new,:create,:index,:show] do
+      resources :reviews,only:[:new,:create,:show]
+    end
+    #resources :reviews,only:[:new,:create,:show]
     resources :comments,only:[:new,:create]
   
   #ゲストログイン

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_14_050106) do
+ActiveRecord::Schema.define(version: 2023_01_22_071501) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,12 +51,16 @@ ActiveRecord::Schema.define(version: 2023_01_14_050106) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "movie_genre_relations", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "movies", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.integer "genre_id", null: false
     t.string "title", default: "", null: false
-    t.integer "point", null: false
-    t.integer "review_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -65,8 +69,7 @@ ActiveRecord::Schema.define(version: 2023_01_14_050106) do
     t.integer "member_id", null: false
     t.integer "movie_id", null: false
     t.text "review_text", default: "", null: false
-    t.integer "point", null: false
-    t.integer "comment_number", null: false
+    t.float "point", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
