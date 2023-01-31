@@ -17,13 +17,13 @@ class Public::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    #@genre =
+    @genre = Genre.all
   end
 
   def show
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews.all
-    @review = @movie.reviews.find(params[:id])
+    #@review = @movie.reviews.find(params[:id])
   end
   
   private
