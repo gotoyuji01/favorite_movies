@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/members/my_page' => 'members#show'
+    get '/movies/genres/:id' => 'movies#genre_movies', as: 'genre_movies'
   #moviesが親、reviewsが子の関係  
     resources :movies,only:[:new,:create,:index,:show] do
       resources :reviews,only:[:new,:create,:show]

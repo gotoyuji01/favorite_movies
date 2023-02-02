@@ -11,6 +11,8 @@ class Movie < ApplicationRecord
   
 # 作品名が重複しない
   validates :title, uniqueness: true
+# 作品名が選択されている
+  validates :title, presence: true
 # ジャンルが選択されている  
   validates :genre_ids, presence: true
 # アソシエーションを組んであるモデルに対してのバリデーション  

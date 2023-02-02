@@ -1,2 +1,22 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="row">
+  <h3><%= "会員名 #{@member.name}" %></br>
+      <%= "メールアドレス #{@member.email}" %>
+  </h3>
+</div>
+
+<div class="row">
+  <%= link_to "作品投稿", new_movie_path, class: "btn btn-primary" %>
+</div>
+
+<div class="row">
+  <h3><%= @member.name %> のレビュー</h3>
+</div>
+
+<% @reviews.each do |review| %>
+<div class="border border-dark" style="margin:10px;">
+    <p>作品名 <%= link_to "#{review.movie.title}", movie_path(review.movie.id) %></br>
+       ジャンル <%#<%= "#{review.movie.genre.name}" %></br>
+       評価 <%= review.point %>点 / 5.0点</br>
+       <%= review.review_text %></p>
+</div>
+<% end %>
