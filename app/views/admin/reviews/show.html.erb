@@ -1,2 +1,28 @@
-<h1>Admin::Reviews#show</h1>
-<p>Find me in app/views/admin/reviews/show.html.erb</p>
+<div class="row">
+  <h3><%= "#{@review.movie.title} に投稿された #{@review.member.name} のレビュー" %></h3>
+</div>
+
+<div class="row">
+  <%= link_to "削除する",admin_movie_review_path(@review),class: "btn btn-danger",method: :delete %>
+</div>
+
+<div class="border border-dark" style="margin:10px;">
+  <p><%= "#{@review.member.name} のレビュー" %></br>
+     <%= @review.created_at.strftime('%Y/%m/%d %H:%M') %></br>
+     評価 <%= @review.point %>点 / 5.0点</br>
+     <%= @review.review_text %></p>
+</div>
+
+<div class="row">
+  <p><%= "コメント #{@review.comments.count(:comment_text)} 件" %></p>
+</div>
+
+<% @comments.each do |comment| %>
+<div class="border border-dark" style="margin-bottom:1px;">
+    <p><%= comment.member.name %></br>
+       <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></br>
+       <%= comment.comment_text %></p>
+</div>
+
+<% end %>
+

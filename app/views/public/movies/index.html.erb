@@ -28,7 +28,10 @@
                 <% end %>
               </td>
               <td>
-                <%= movie.reviews.average(:point).round(1) %>点 / 5.0点
+                <!--レビュー評価が存在する場合は平均点で表示する-->
+                <% if movie.reviews.average(:point).present? %>
+                  <%= movie.reviews.average(:point).round(1) %>点 / 5.0点
+                <% end %>
               </td>
               <td>
                 <%= movie.reviews.count(:review_text) %> 件

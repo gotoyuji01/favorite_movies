@@ -1,2 +1,46 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2><%= "作品一覧 （全ジャンル）" %></h2>
+  <div class="row">
+    <div class="col-2 border border-dark">
+      <h4>ジャンル検索</h4>
+      <% @genres.each do |genre| %>
+        <%= link_to "#{genre.name}", admin_genre_movies_path(genre.id) %></br>
+      <% end %>
+    </div>
+    <div class="col-10">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>作品名</th>
+            <th>ジャンル</th>
+            <th>評価</th>
+            <th>レビュー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @movies.each do |movie| %>
+            <tr>
+              <td>
+                <%= link_to "#{movie.title}", admin_movie_path(movie.id) %>
+              </td>
+              <td>
+                <% movie.genres.each do |genre| %>
+                 <%= genre.name %>
+                <% end %>
+              </td>
+              <td>
+              <!--レビュー評価が存在する場合は平均点で表示する-->
+                <% if movie.reviews.average(:point).present? %>
+                  <%= movie.reviews.average(:point).round(1) %>点 / 5.0点
+                <% end %>
+              </td>
+              <td>
+                <%= movie.reviews.count(:review_text) %> 件
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%#<%= paginate @movies %>
+

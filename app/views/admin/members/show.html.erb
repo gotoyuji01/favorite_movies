@@ -1,2 +1,22 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="row">
+  <h3><%= "会員名 #{@member.name}" %></br>
+      <%= "メールアドレス #{@member.email}" %>
+  </h3>
+</div>
+
+<div class="row">
+  <h3><%= @member.name %> のレビュー</h3>
+</div>
+
+<% @reviews.each do |review| %>
+<div class="border border-dark" style="margin:10px;">
+    <p>作品名 <%= link_to "#{review.movie.title}", admin_movie_review_path(@member,review) %></br>
+<!--movieとgenresはhas manyの関係。genres.nameはNomethodとなるため、eachで配列の中のジャンル名を取り出す-->
+       ジャンル 
+       <% review.movie.genres.each do |genre| %>
+         <%= genre.name %>
+       <% end %></br>
+       評価 <%= review.point %>点 / 5.0点</br>
+       <%= review.review_text %></p>
+</div>
+<% end %>

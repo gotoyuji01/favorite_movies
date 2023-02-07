@@ -17,7 +17,6 @@ Rails.application.routes.draw do
         resources :comments,only:[:new,:create]
       end
     end
-    #resources :comments,only:[:new,:create]
   
   #ゲストログイン
   devise_scope :member do
@@ -34,10 +33,12 @@ Rails.application.routes.draw do
   #ルーティング設定
   namespace :admin do
     root 'homes#top'
-    resources :movies,only:[:show]
-    resources :reviews,only:[:show,:destroy]
+    get '/movies/genres/:id' => 'homes#genre_movies', as: 'genre_movies'
+  #moviesが親、reviewsが子の関係  
+    resources :movies,only:[:show] do
+      resources :reviews,only:[:show,:destroy]
+    end
     resources :members,only:[:index,:show]
-    #resources :genres
     
   end
   

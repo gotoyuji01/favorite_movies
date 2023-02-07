@@ -1,18 +1,9 @@
-<div class="text-center">
-  <h3>
-    ようこそ、Favorite Moviesへ！</br>
-    このサイトは映画のレビューサイトです。</br>
-    あなたのお気に入りの作品を投稿してください。</br>
-    ※作品投稿には会員登録が必要になります。
-  </h3>
-</div>
-
-<h4><%= "作品一覧 （全ジャンル）" %></h4>
+<h2><%= "作品一覧 （#{@genre.name}）" %></h2>
   <div class="row">
     <div class="col-2 border border-dark">
       <h4>ジャンル検索</h4>
       <% @genres.each do |genre| %>
-        <%= link_to "#{genre.name}", genre_movies_path(genre.id) %></br>
+        <%= link_to "#{genre.name}", admin_genre_movies_path(genre.id) %></br>
       <% end %>
     </div>
     <div class="col-10">
@@ -29,7 +20,7 @@
           <% @movies.each do |movie| %>
             <tr>
               <td>
-                <%= link_to "#{movie.title}", movie_path(movie.id) %>
+                <%= link_to "#{movie.title}", admin_movie_path(movie.id) %>
               </td>
               <td>
                 <% movie.genres.each do |genre| %>
@@ -51,3 +42,4 @@
       </table>
     </div>
   </div>
+<%#<%= paginate @movies %>

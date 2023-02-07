@@ -24,14 +24,12 @@ class Public::MoviesController < ApplicationController
   #ジャンルを先に指定して、ジャンルに基づく作品を拾う(中間テーブル)  
     @genre = Genre.find(params[:id]) 
     @movies = @genre.movies
-    
     @genres = Genre.all
   end
 
   def show
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews.all
-    @review = Review.find(params[:id])
   end
   
   private
