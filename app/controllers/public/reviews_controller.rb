@@ -7,13 +7,19 @@ class Public::ReviewsController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     @review = Review.new(review_params)
-    @review.save!
-    redirect_to movie_path(@movie.id)
+    # レビュー登録成功のif文
+    if @review.save
+       redirect_to movie_path(@movie.id)
+    else
+       render :new
+    end
+
   end
   
 
   def show
     @review = Review.find(params[:id])
+    @comments = @review.comments.all
   end
   
    private

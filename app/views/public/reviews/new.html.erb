@@ -1,5 +1,13 @@
 <h2>レビュー投稿</h2></br>
 
+<!--エラーメッセージ-->
+<% if @review.errors.any? %>
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
     <div class="row">
       <div class="col-3">作品名</div>

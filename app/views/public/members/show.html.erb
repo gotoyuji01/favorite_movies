@@ -15,7 +15,11 @@
 <% @reviews.each do |review| %>
 <div class="border border-dark" style="margin:10px;">
     <p>作品名 <%= link_to "#{review.movie.title}", movie_path(review.movie.id) %></br>
-       ジャンル <%#<%= "#{review.movie.genre.name}" %></br>
+<!--movieとgenresはhas manyの関係。genres.nameはNomethodとなるため、eachで配列の中のジャンル名を取り出す-->
+       ジャンル 
+       <% review.movie.genres.each do |genre| %>
+         <%= genre.name %>
+       <% end %></br>
        評価 <%= review.point %>点 / 5.0点</br>
        <%= review.review_text %></p>
 </div>

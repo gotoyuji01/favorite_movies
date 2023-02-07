@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     get '/movies/genres/:id' => 'movies#genre_movies', as: 'genre_movies'
   #moviesが親、reviewsが子の関係  
     resources :movies,only:[:new,:create,:index,:show] do
-      resources :reviews,only:[:new,:create,:show]
+      resources :reviews,only:[:new,:create,:show] do
+        resources :comments,only:[:new,:create]
+      end
     end
-    #resources :reviews,only:[:new,:create,:show]
-    resources :comments,only:[:new,:create]
+    #resources :comments,only:[:new,:create]
   
   #ゲストログイン
   devise_scope :member do
