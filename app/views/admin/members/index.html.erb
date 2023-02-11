@@ -6,6 +6,7 @@
           <th>会員ID</th>
           <th>会員名</th>
           <th>メールアドレス</th>
+          <th>ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,13 @@
             <td>
               <%= member.email %>
             </td>
+            <td>
+              <% if member.is_deleted == false %>
+					      <li class="list-unstyled text-success">有効</li>
+					    <% else %>
+					      <li class="list-unstyled text-danger">退会</li>
+					    <% end %>
+					</td>
           </tr>
         <% end %>
       </tbody>

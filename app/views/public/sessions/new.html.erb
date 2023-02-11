@@ -1,5 +1,15 @@
 <div class=“row”>
   <h2>ログイン</h2></br>
+  
+  <!--エラーメッセージ-->
+<% if @member.errors.any? %>
+  <ul>
+    <% @member.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  
   <h3>会員の方はこちらからログイン</h3>
 
   <%= form_for(resource, as: resource_name, url: member_session_path) do |f| %>

@@ -1,5 +1,14 @@
 <h2>新規会員登録</h2></br>
 
+<!--エラーメッセージ-->
+<% if @member.errors.any? %>
+  <ul>
+    <% @member.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <%= form_for(resource, as: resource_name, url: member_registration_path) do |f| %>
     <div class="row">
       <div class="col-3">

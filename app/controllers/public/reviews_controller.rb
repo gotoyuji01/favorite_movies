@@ -1,4 +1,7 @@
 class Public::ReviewsController < ApplicationController
+ # ログインしていないと表示できない  
+  before_action :authenticate_member!
+  
   def new
     @movie = Movie.find(params[:movie_id])
     @review = Review.new

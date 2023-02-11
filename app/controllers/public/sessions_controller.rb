@@ -37,5 +37,18 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to movies_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   
+  protected
+
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+  def member_state
+    @member = Member.find_by(email: params[:member][:email])
+    return if !@member 
+      if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_member_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+  end
   
 end

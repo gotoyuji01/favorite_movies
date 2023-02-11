@@ -1,4 +1,7 @@
 class Admin::ReviewsController < ApplicationController
+ # ログインしていないと表示できない  
+  before_action :authenticate_admin!
+  
   def show
     @review = Review.find(params[:id])
     @comments = @review.comments.all

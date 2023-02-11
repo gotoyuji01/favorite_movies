@@ -10,9 +10,12 @@ class Member < ApplicationRecord
   
   # 会員名が一意であること
   validates :name, uniqueness: true
-  
-  # メールアドレスが一意であること
+  # 会員名が選択されている
+  validates :name, presence: true
+   # メールアドレスが一意であること
   validates :email, uniqueness: true
+  # メールアドレスが選択されている
+  validates :email, presence: true
   
   # ゲストログイン
   def self.guest
@@ -21,6 +24,11 @@ class Member < ApplicationRecord
       member.password_confirmation = member.password
       member.name = 'ゲストメンバー'
     end
+  end
+  
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
   
   

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       resources :reviews,only:[:show,:destroy]
     end
     resources :members,only:[:index,:show]
-    
+    patch '/members/:id' => 'members#update', as: 'member_update'
   end
   
   
