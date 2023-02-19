@@ -1,4 +1,4 @@
-<h2>コメント投稿</h2></br>
+<h2 class="border-bottom">コメント投稿</h2></br>
 
 <!--エラーメッセージ-->
 <% if @comment.errors.any? %>
@@ -9,20 +9,20 @@
   </ul>
 <% end %>
 
-<div class="border border-dark" style="margin:10px;">
-  <p><%= "#{@review.member.name} のレビュー" %></br>
-     <%= @review.created_at.strftime('%Y/%m/%d %H:%M') %></br>
-     評価 <%= @review.point %>点 / 5.0点</br>
-     <%= @review.review_text %></p>
+<div class="border border-dark rounded" style="margin:10px;">
+  <li class="list-unstyled mt-1 ml-1"><%= "#{@review.member.name} のレビュー" %></li>
+  <li class="list-unstyled text-muted small ml-1"><%= @review.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+  <li class="list-unstyled ml-1">評価 <%= @review.point %>点 / 5.0点</li>
+  <li class="list-unstyled mt-1 mr-1 mb-1 ml-2"><%= @review.review_text %></li>
 </div>
   
   <%= form_with model: [@movie, @review, @comment] do |f| %> 
 
-    <div class="row">
-      <div class="col-3">
+    <div class="row mt-3">
+      <div class="col-xl-1">
         <%= f.label :コメント %></div>
-      <div class="col-9">
-        <%= f.text_area :comment_text %>
+      <div class="col-xl-11">
+        <%= f.text_area :comment_text, style: "width:50%; height:150px;" %>
         <!--ログインメンバーのidで保存する-->
         <%= f.hidden_field :member_id, value: current_member.id %>
         <!--レビューのidで保存する-->
@@ -30,9 +30,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-9">
+    <div class="row mt-1">
+      <div class="col-xl-1"></div>
+      <div class="col-xl-11">
         <%= f.submit "投稿する",class: "btn btn-success" %></div>
     </div>
 

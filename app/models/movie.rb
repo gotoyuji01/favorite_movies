@@ -17,6 +17,10 @@ class Movie < ApplicationRecord
   validates :genre_ids, presence: true
 # アソシエーションを組んであるモデルに対してのバリデーション  
   validates_associated :reviews
-
+  
+# ransack v4.0.0から検索を許可するカラムの追加が必要  
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "member_id", "title", "updated_at"]
+  end
   
 end

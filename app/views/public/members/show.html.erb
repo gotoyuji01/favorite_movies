@@ -1,26 +1,28 @@
 <div class="row">
-  <h3><%= "会員名 #{@member.name}" %></br>
-      <%= "メールアドレス #{@member.email}" %>
-  </h3>
+  <div class="col-md-10">
+    <h3><%= "【会員名】 #{@member.name}" %></br>
+        <%= "【メールアドレス】 #{@member.email}" %>
+    </h3>
+  </div>
+
+  <div class="col-md-2 mt-md-4">
+    <%= link_to "作品投稿", new_movie_path, class: "btn btn-primary" %>
+  </div>
 </div>
 
-<div class="row">
-  <%= link_to "作品投稿", new_movie_path, class: "btn btn-primary" %>
-</div>
-
-<div class="row">
-  <h3><%= @member.name %> のレビュー</h3>
+<div class="row ml-2 mt-md-3">
+  <h3 class="mb-0"><%= @member.name %> のレビュー</h3>
 </div>
 
 <% @reviews.each do |review| %>
-<div class="border border-dark" style="margin:10px;">
-    <p>作品名 <%= link_to "#{review.movie.title}", movie_path(review.movie.id) %></br>
+<div class="border border-dark rounded" style="margin:10px;">
+  <li class="list-unstyled mt-1 ml-1">作品名 <%= link_to "#{review.movie.title}", movie_path(review.movie.id) %></li>
 <!--movieとgenresはhas manyの関係。genres.nameはNomethodとなるため、eachで配列の中のジャンル名を取り出す-->
-       ジャンル 
-       <% review.movie.genres.each do |genre| %>
-         <%= genre.name %>
-       <% end %></br>
-       評価 <%= review.point %>点 / 5.0点</br>
-       <%= review.review_text %></p>
+  <li class="list-unstyled ml-1">ジャンル 
+    <% review.movie.genres.each do |genre| %>
+      <%= genre.name %>
+    <% end %></li>
+  <li class="list-unstyled ml-1">評価 <%= review.point %>点 / 5.0点</li>
+  <li class="list-unstyled mt-1 mr-1 mb-1 ml-2"><%= review.review_text %></li>
 </div>
 <% end %>

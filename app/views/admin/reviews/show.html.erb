@@ -1,27 +1,27 @@
-<div class="row">
+<div class="row ml-2">
   <h3><%= "#{@review.movie.title} に投稿された #{@review.member.name} のレビュー" %></h3>
 </div>
 
-<div class="row">
+<div class="row ml-2">
   <%= link_to "削除する",admin_movie_review_path(@review),class: "btn btn-danger",method: :delete %>
 </div>
 
-<div class="border border-dark" style="margin:10px;">
-  <p><%= "#{@review.member.name} のレビュー" %></br>
-     <%= @review.created_at.strftime('%Y/%m/%d %H:%M') %></br>
-     評価 <%= @review.point %>点 / 5.0点</br>
-     <%= @review.review_text %></p>
+<div class="border border-dark rounded" style="margin:10px;">
+  <li class="list-unstyled mt-1 ml-1"><%= "#{@review.member.name} のレビュー" %></li>
+  <li class="list-unstyled text-muted small ml-1"><%= @review.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+  <li class="list-unstyled ml-1">評価 <%= @review.point %>点 / 5.0点</li>
+  <li class="list-unstyled mt-1 mr-1 mb-1 ml-2"><%= @review.review_text %></li>
 </div>
 
-<div class="row">
-  <p><%= "コメント #{@review.comments.count(:comment_text)} 件" %></p>
+<div class="row ml-2">
+  <p class="mb-0"><%= "コメント #{@review.comments.count(:comment_text)} 件" %></p>
 </div>
 
 <% @comments.each do |comment| %>
-<div class="border border-dark" style="margin-bottom:1px;">
-    <p><%= comment.member.name %></br>
-       <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></br>
-       <%= comment.comment_text %></p>
+<div class="border border-dark rounded" style="margin:2px 10px 0 10px;">
+  <li class="list-unstyled mt-1 ml-1"><%= comment.member.name %></li>
+  <li class="list-unstyled text-muted small ml-1"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+  <li class="list-unstyled mt-1 mr-1 mb-1 ml-2"><%= comment.comment_text %></li>
 </div>
 
 <% end %>

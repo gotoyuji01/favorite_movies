@@ -25,6 +25,17 @@
           <% end %>
         </div>
       </nav>
+    <!--検索フォーム-->
+      <div class="container">
+      <div class="text-right mt-1 mr-1">
+        <% pp  @search %>
+        <% pp movies_path %>
+        <%= search_form_for @search, url:movies_path do |f| %>
+          <%= f.search_field :title_cont ,placeholder: '作品名を入力...' %>
+          <%= f.submit ("検索") , class: 'search-btn'%>
+        <% end %>
+      </div>
+      </div>
     </header>
     
     <main>
@@ -37,6 +48,7 @@
         <% end %>
         
     <%= yield %>
+      </div>
     </main>
   
   </body>

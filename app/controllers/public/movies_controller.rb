@@ -1,6 +1,6 @@
 class Public::MoviesController < ApplicationController
- # ログインしていないと表示できない  
-  before_action :authenticate_member!, except: [:genre_movies]
+ # ログインしていないと表示できない(except以外)  
+  before_action :authenticate_member!, except: [:index, :genre_movies]
   
   def new
     @movie = Movie.new
