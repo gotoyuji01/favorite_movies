@@ -6,7 +6,10 @@
   </div>
 
   <div class="col-md-2 mt-md-4">
-    <%= link_to "作品投稿", new_movie_path, class: "btn btn-primary" %>
+   <!--ゲストメンバーは作品投稿できない-->
+    <% if not current_member.id == 1 %>
+      <%= link_to "作品投稿", new_movie_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 

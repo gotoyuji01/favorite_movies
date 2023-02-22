@@ -1,9 +1,9 @@
-<div class="text-center mt-3">
-  <h3>
+<div class="mt-3">
+  <h3 style="color:teal;">
     ようこそ、Favorite Moviesへ！</br>
     このサイトは映画のレビューサイトです。</br>
     あなたのお気に入りの作品を投稿してください。</br>
-    ※作品投稿には会員登録が必要になります。
+    ※作品・レビュー投稿には会員登録が必要になります。
   </h3>
 </div>
 
@@ -50,5 +50,7 @@
           <% end %>
         </tbody>
       </table>
+      <!--ページネーションの記述-->
+      <%= paginate @movies, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/members/my_page' => 'members#show'
     get '/movies/genres/:id' => 'movies#genre_movies', as: 'genre_movies'
-  #moviesが親、reviewsが子の関係  
+  #moviesが親、reviewsが子、commentsが孫の関係  
     resources :movies,only:[:new,:create,:index,:show] do
       resources :reviews,only:[:new,:create,:show] do
         resources :comments,only:[:new,:create]

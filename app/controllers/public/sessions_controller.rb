@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     member = Member.guest
     sign_in member # ユーザーをログインさせる
-    redirect_to movies_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to movies_path, notice: 'ゲストメンバー(閲覧のみ)としてログインしました。'
   end
   
   protected
