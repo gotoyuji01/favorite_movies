@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      member:
+        name: 会員名
+        email: メールアドレス
+        password: パスワード
+      movie:
+        title: 作品名
+      movie/reviews:
+        review_text: レビュー
+        point: 評価
+      review:
+        review_text: レビュー
+        point: 評価
+      comment:
+        comment_text: コメント
+      
+ 

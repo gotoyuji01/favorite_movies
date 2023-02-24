@@ -13,6 +13,11 @@ class Movie < ApplicationRecord
   validates :title, uniqueness: true
 # 作品名が選択されている
   validates :title, presence: true
+# 作品名に全角ひらがな、全角カタカナ、漢字、記号、アルファベット大文字、全角数字のみを指定  
+  with_options presence: true, format: { with: /\A[ぁ-んー－ ァ-ヶー－ 一-龥 、 。 ・ 〜 A-Z ０-９]+\z/, message: 'に全角文字(アルファベットは大文字のみ)を使用してください' } do
+    validates :title
+  end
+  
 # ジャンルが選択されている  
   validates :genre_ids, presence: true
 # アソシエーションを組んであるモデルに対してのバリデーション  
