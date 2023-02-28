@@ -3,7 +3,7 @@
 </div>
 
 <div class="row ml-2">
-  <%= link_to "削除する",admin_movie_review_path(@review),class: "btn btn-danger",method: :delete %>
+  <%= link_to "削除する",admin_movie_review_path(@review),class: "btn btn-danger",method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
 </div>
 
 <div class="border border-dark rounded" style="margin:10px;">
